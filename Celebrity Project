@@ -1,0 +1,75 @@
+CREATE TABLE celebrity 
+    (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    full_name TEXT,
+    age INTEGER,
+    nationality TEXT);
+    
+
+INSERT INTO celebrity (full_name, age, nationality) VALUES ("Reese Whitherspoon", 46, "USA");
+INSERT INTO celebrity (full_name, age, nationality) VALUES ("Jeff Daniels", 67, "USA");
+INSERT INTO celebrity (full_name, age, nationality) VALUES ("Timothee Chalamet",26,"USA");
+INSERT INTO celebrity (full_name, age, nationality) VALUES ("Hugh Jackman", 53, "Australia");
+INSERT INTO celebrity (full_name, age, nationality) VALUES ("Steve Buscemi", 64, "USA");
+INSERT INTO celebrity (full_name, age, nationality) VALUES ("Ryan Gosling", 41, "Canada");
+INSERT INTO celebrity (full_name, age, nationality) VALUES ("Austin Butler", 30, "USA");
+INSERT INTO celebrity (full_name, age, nationality) VALUES ("Dakota Fanning", 28, "USA");
+
+
+CREATE TABLE film 
+    (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    celebrity_id INTEGER,
+    first_film TEXT,
+    release_year INTEGER);
+    
+
+INSERT INTO film (celebrity_id, first_film, release_year) VALUES (1, "Wildflower", 1992);
+INSERT INTO film (celebrity_id, first_film, release_year) VALUES (2, "Ragtime", 1982);
+INSERT INTO film (celebrity_id, first_film, release_year) VALUES (3, "Sweet Tooth",2008);
+INSERT INTO film  (celebrity_id, first_film, release_year) VALUES (4, "Paperback Hero", 1999);
+INSERT INTO film (celebrity_id, first_film, release_year) VALUES (5, "Tommy's", 1985);
+INSERT INTO film (celebrity_id, first_film, release_year) VALUES (6, "Frankenstein and Me", 1996);
+INSERT INTO film (celebrity_id, first_film, release_year) VALUES (7, "Aliens in the Attic", 2009);
+INSERT INTO film (celebrity_id, first_film, release_year) VALUES (8, "I Am Sam" , 2009);
+
+CREATE TABLE hometown
+    (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    hometown_id INTEGER,
+    city TEXT,
+    state TEXT,
+    country TEXT);
+    
+
+INSERT INTO hometown (hometown_id, city, state, country) VALUES (1, "Nashville", "Tennessee", "United States");
+INSERT INTO hometown (hometown_id, city, state, country) VALUES (2,"Chelsea", "Michigan", "United States");
+INSERT INTO hometown (hometown_id, city, state, country) VALUES (3, "Manhattan","New York City", "United States");
+INSERT INTO hometown  (hometown_id, city, state, country) VALUES (4, "Sydney", "New South Wales", "Australia");
+INSERT INTO hometown (hometown_id, city, state, country) VALUES (5, "Brooklyn", "New York City", "United States");
+INSERT INTO hometown (hometown_id, city, state, country) VALUES (6, "Cornwall","Ontario", "Canada");
+INSERT INTO hometown (hometown_id, city, state, country) VALUES (7, "Anaheim","California", "United States");
+INSERT INTO hometown (hometown_id, city, state, country) VALUES (8, "Conyers" ,"Georgia" , "United States");
+
+
+
+
+
+
+
+
+
+Select * from celebrity;
+Select * from film; 
+Select * from hometown; 
+
+/* Each celebrity's first movie, release year and hometown*/ 
+
+Select celebrity.full_name, film.first_film, film.release_year
+from celebrity 
+join film 
+on celebrity.id = film.celebrity_id; 
+
+/* Each celebrity's age and hometown(city, state, country) */ 
+
+Select celebrity.full_name, celebrity.age, hometown.city as hometown_city,hometown.state, hometown.country
+from celebrity 
+join hometown 
+on celebrity.id = hometown.hometown_id; 
